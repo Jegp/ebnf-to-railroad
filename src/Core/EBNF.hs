@@ -51,7 +51,7 @@ nonEmptyListSepBy p c = NonEmpty.fromList <$> sepBy1 p sep
 identifier :: Parser Text
 identifier = lexeme $ Text.pack <$> text
   where
-    text = (:) <$> letterChar <*> many (alphaNumChar <|> char '-')
+    text = (:) <$> letterChar <*> many ((alphaNumChar <|> char '-') <|> char ' ')
 
 integer :: Parser Int
 integer = lexeme $ read <$> some digitChar
